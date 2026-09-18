@@ -1,0 +1,1212 @@
+@font-face {
+    font-family: "MatchWorld";
+    src: url("fonts/MatchaWorld.otf");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    min-height: 100vh;
+    padding-bottom: 50px;
+    overflow-x: hidden;
+    background: #111;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.25)
+        ),
+        url("0101.png");
+
+    background-repeat: repeat;
+    background-size: 300px 300px;
+
+    z-index: -2;
+
+    animation: fundoDescendo 8s linear infinite;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 20%,
+            rgba(0, 0, 0, 0.35) 100%
+        );
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+@keyframes fundoDescendo {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 300px;
+    }
+}
+
+#MainText {
+    position: relative;
+
+    width: fit-content;
+    max-width: 90%;
+
+    margin: 40px auto;
+    padding: 15px 35px;
+
+    font-family: "MatchWorld";
+    font-size: clamp(40px, 7vw, 90px);
+    font-weight: normal;
+
+    text-align: center;
+    letter-spacing: 4px;
+
+    color: #ff2020;
+
+    -webkit-text-stroke: 2px #111;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.4);
+
+    backdrop-filter: blur(5px);
+
+    text-shadow:
+        3px 3px 0 #111,
+        0 0 10px rgba(255, 30, 30, 0.7);
+
+    transition: 0.3s;
+}
+
+#MainText:hover {
+    transform: scale(1.03);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(255, 30, 30, 0.5);
+}
+
+main {
+    width: 95%;
+    max-width: 1400px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 30px auto;
+    padding: 30px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.45);
+
+    backdrop-filter: blur(8px);
+
+    animation: aparecer 0.4s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card h2,
+#torneio > h2 {
+    margin-top: 0;
+
+    font-family: "MatchWorld";
+
+    font-size: 35px;
+
+    color: #e51c23;
+
+    -webkit-text-stroke: 1px #111;
+
+    text-shadow:
+        2px 2px 0 #fff;
+
+    text-align: center;
+}
+
+.card p {
+    font-size: 18px;
+}
+
+input {
+    width: 80%;
+    max-width: 350px;
+
+    padding: 15px;
+
+    margin: 10px;
+
+    font-size: 18px;
+
+    border: 2px solid #222;
+    border-radius: 10px;
+
+    outline: none;
+
+    transition: 0.25s;
+
+    background: rgba(255, 255, 255, 0.9);
+}
+
+input:focus {
+    border-color: #e51c23;
+
+    box-shadow:
+        0 0 0 3px rgba(229, 28, 35, 0.15),
+        0 0 15px rgba(229, 28, 35, 0.3);
+
+    transform: scale(1.02);
+}
+
+button {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botaoPrincipal {
+    position: relative;
+
+    padding: 15px 30px;
+
+    margin: 15px 5px;
+
+    border: 2px solid #111;
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff3030,
+            #c90000
+        );
+
+    color: white;
+
+    font-size: 16px;
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 6px 0 #760000,
+        0 10px 20px rgba(0, 0, 0, 0.3);
+
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s,
+        filter 0.15s;
+}
+
+.botaoPrincipal:hover {
+    transform: translateY(-3px);
+
+    filter: brightness(1.15);
+
+    box-shadow:
+        0 9px 0 #760000,
+        0 14px 25px rgba(0, 0, 0, 0.35),
+        0 0 20px rgba(255, 30, 30, 0.45);
+}
+
+.botaoPrincipal:active {
+    transform: translateY(4px);
+
+    box-shadow:
+        0 2px 0 #760000,
+        0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+#erro {
+    color: #d00000;
+    font-weight: bold;
+    min-height: 20px;
+}
+
+#listaParticipantes {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.participanteInput {
+    width: 100%;
+    margin: 0;
+}
+
+#torneio {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+#chave {
+    display: flex;
+
+    width: 100%;
+    min-height: 650px;
+
+    gap: 35px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    align-items: center;
+
+    padding: 40px 30px;
+}
+
+.rodada {
+    min-width: 230px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 30px;
+
+    justify-content: center;
+    align-items: stretch;
+
+    flex-shrink: 0;
+}
+
+.rodada h3 {
+    margin: 0;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    border: 2px solid #222;
+
+    font-family: "MatchWorld";
+
+    font-size: 22px;
+
+    color: #e51c23;
+
+    -webkit-text-stroke: 1px #111;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.25);
+
+    text-align: center;
+}
+
+.confronto {
+    padding: 10px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 2px solid #222;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.3);
+
+    transition: 0.2s;
+}
+
+.confronto:hover {
+    transform: scale(1.02);
+}
+
+.jogador {
+    display: block;
+
+    width: 100%;
+
+    margin: 4px 0;
+
+    padding: 12px;
+
+    border: 2px solid #bbb;
+
+    border-radius: 9px;
+
+    background: #f2f2f2;
+
+    color: #111;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+.jogador:not(:disabled):hover {
+    background: #ff3030;
+
+    border-color: #111;
+
+    color: white;
+
+    transform: scale(1.03);
+
+    box-shadow:
+        0 0 12px rgba(255, 30, 30, 0.4);
+}
+
+.jogador.vencedor {
+    background: #20a94b;
+
+    border-color: #111;
+
+    color: white;
+
+    font-weight: bold;
+}
+
+.jogador.desativado {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.vs {
+    display: block;
+
+    margin: 5px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    color: #777;
+
+    text-align: center;
+}
+
+.escondido {
+    display: none !important;
+}
+
+#resultadoFinal {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 50px auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+
+    align-items: center;
+}
+
+.resultadoTitulo {
+    margin: 20px auto;
+
+    font-family: "MatchWorld";
+
+    font-size: 35px;
+
+    color: #e51c23;
+
+    -webkit-text-stroke: 1px #111;
+
+    text-shadow:
+        2px 2px 0 white;
+
+    text-align: center;
+}
+
+.lugarResultado {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 8px auto;
+
+    padding: 16px 22px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border: 2px solid #222;
+
+    border-radius: 14px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 18px;
+
+    color: #111;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.25);
+
+    animation: aparecerLugar 0.35s ease;
+}
+
+.emojiLugar {
+    min-width: 42px;
+
+    font-size: 30px;
+
+    text-align: center;
+}
+
+.numeroLugar {
+    min-width: 70px;
+
+    font-family: "MatchWorld";
+
+    font-size: 20px;
+
+    color: #e51c23;
+
+    -webkit-text-stroke: 1px #111;
+}
+
+.nomeLugar {
+    font-weight: bold;
+}
+
+@keyframes aparecerLugar {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.podio {
+    width: 100%;
+    max-width: 800px;
+
+    margin: 30px auto;
+
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 3px solid #222;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.4);
+
+    animation: aparecerPodio 0.6s ease;
+}
+
+.podioTitulo {
+    margin-bottom: 30px;
+
+    font-family: "MatchWorld";
+
+    font-size: 40px;
+
+    color: #e51c23;
+
+    -webkit-text-stroke: 1px #111;
+
+    text-shadow:
+        2px 2px 0 white;
+
+    text-align: center;
+}
+
+.podioContainer {
+    min-height: 330px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    gap: 12px;
+
+    padding: 20px 10px 0;
+}
+
+.podioLugar {
+    width: 30%;
+
+    min-width: 150px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    padding: 15px 10px;
+
+    border: 3px solid #222;
+
+    border-radius: 15px 15px 0 0;
+
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.3);
+
+    transition: 0.25s;
+}
+
+.podioLugar:hover {
+    transform: translateY(-8px);
+}
+
+.primeiroPodio {
+    height: 270px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffe873,
+            #d4a900
+        );
+}
+
+.segundoPodio {
+    height: 210px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #eeeeee,
+            #a8a8a8
+        );
+}
+
+.terceiroPodio {
+    height: 160px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #e2a064,
+            #a85d25
+        );
+}
+
+.podioMedalha {
+    font-size: 50px;
+
+    margin-bottom: 5px;
+}
+
+.podioNumero {
+    font-family: "MatchWorld";
+
+    font-size: 28px;
+
+    color: #111;
+}
+
+.podioNome {
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    border: 2px solid #222;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    color: #111;
+
+    text-align: center;
+
+    overflow-wrap: anywhere;
+}
+
+@keyframes aparecerPodio {
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.opcoesTorneio {
+    margin: 20px auto;
+}
+
+.opcaoCheck {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px 20px;
+
+    border: 2px solid #222;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.opcaoCheck:hover {
+    transform: scale(1.03);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+.opcaoCheck input {
+    width: 20px;
+    height: 20px;
+
+    margin: 0;
+
+    accent-color: #e51c23;
+}
+
+.pessoaBotao {
+    margin-bottom: 20px;
+}
+
+.novoTorneio {
+    display: block;
+
+    margin: 30px auto;
+}
+
+.confirmacao {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    backdrop-filter: blur(5px);
+}
+
+.confirmacaoCaixa {
+    width: 90%;
+    max-width: 450px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    background: white;
+
+    border: 3px solid #222;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.5);
+
+    animation: aparecer 0.3s ease;
+}
+
+.confirmacaoCaixa h2 {
+    margin-top: 0;
+
+    font-family: "MatchWorld";
+
+    color: #e51c23;
+
+    -webkit-text-stroke: 1px #111;
+}
+
+.confirmacaoBotoes {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.botaoSim {
+    background:
+        linear-gradient(
+            135deg,
+            #20a94b,
+            #16853a
+        );
+
+    box-shadow:
+        0 6px 0 #0b5425,
+        0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.botaoSim:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #2ac95c,
+            #16853a
+        );
+
+    box-shadow:
+        0 9px 0 #0b5425,
+        0 14px 25px rgba(0, 0, 0, 0.35);
+}
+
+.botaoNao {
+    background:
+        linear-gradient(
+            135deg,
+            #e51c23,
+            #b51218
+        );
+}
+
+.botaoNao:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #ff3030,
+            #b51218
+        );
+}
+
+.bye {
+    background: #ddd !important;
+
+    color: #777 !important;
+
+    border-color: #999 !important;
+
+    cursor: default !important;
+}
+
+.bye:hover {
+    transform: none !important;
+
+    box-shadow: none !important;
+}
+
+@media (max-width: 800px) {
+
+    #chave {
+        min-height: 550px;
+
+        padding: 30px 15px;
+
+        gap: 20px;
+    }
+
+    .rodada {
+        min-width: 200px;
+    }
+
+    .podio {
+        padding: 15px;
+    }
+
+    .podioContainer {
+        gap: 6px;
+    }
+
+    .podioLugar {
+        min-width: 0;
+        width: 33%;
+    }
+
+    .podioMedalha {
+        font-size: 38px;
+    }
+
+    .podioNumero {
+        font-size: 22px;
+    }
+
+    .podioNome {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    #MainText {
+        margin-top: 20px;
+        padding: 12px 20px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    #chave {
+        min-height: 500px;
+
+        padding: 20px 10px;
+    }
+
+    .rodada {
+        min-width: 190px;
+    }
+
+    .confirmacaoBotoes {
+        flex-direction: column;
+    }
+
+    .confirmacaoBotoes button {
+        width: 100%;
+    }
+
+    .lugarResultado {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .numeroLugar {
+        min-width: 55px;
+        font-size: 16px;
+    }
+
+    .emojiLugar {
+        font-size: 24px;
+    }
+
+    .podio {
+        width: 100%;
+        border-radius: 18px;
+    }
+
+    .podioTitulo {
+        font-size: 30px;
+    }
+
+    .podioContainer {
+        min-height: 250px;
+    }
+
+    .primeiroPodio {
+        height: 210px;
+    }
+
+    .segundoPodio {
+        height: 165px;
+    }
+
+    .terceiroPodio {
+        height: 125px;
+    }
+
+    .podioMedalha {
+        font-size: 30px;
+    }
+
+    .podioNumero {
+        font-size: 18px;
+    }
+
+    .podioNome {
+        font-size: 11px;
+        padding: 7px 4px;
+    }
+
+    .jogador.bloqueado {
+        opacity: 0.6;
+        cursor: not-allowed;
+        filter: grayscale(0.5);
+    }
+    
+    .jogador.bloqueado:hover {
+        transform: none;
+    }
+
+    .arquivosTorneio {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 15px auto;
+    }
+    
+    .arquivosTorneio .botaoPrincipal {
+        margin: 5px;
+    }
+}
+
+#nomeTorneio {
+    width: 80%;
+    max-width: 450px;
+}
+
+#tituloTorneio {
+    margin: 10px auto 30px;
+
+    padding: 15px 25px;
+
+    width: fit-content;
+    max-width: 90%;
+
+    font-family: "MatchWorld";
+
+    font-size: clamp(28px, 5vw, 50px);
+
+    color: #e51c23;
+
+    -webkit-text-stroke: 1px #111;
+
+    text-shadow:
+        2px 2px 0 white;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    border: 3px solid #222;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 7px 20px rgba(0, 0, 0, 0.3);
+
+    text-align: center;
+
+    overflow-wrap: anywhere;
+}
+
+.arquivosTorneio {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin: 20px auto;
+}
+
+.arquivosTorneio .botaoPrincipal {
+    margin: 5px;
+}
+
+.botaoArquivo {
+    background:
+        linear-gradient(
+            135deg,
+            #333,
+            #111
+        );
+}
+
+.botaoArquivo:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #555,
+            #222
+        );
+
+    box-shadow:
+        0 9px 0 #000,
+        0 14px 25px rgba(0, 0, 0, 0.35),
+        0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.acoesJogador {
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 6px;
+}
+
+.acaoJogador {
+    display: inline-flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    width: 30px;
+    height: 30px;
+
+    padding: 0;
+
+    border: 2px solid #222;
+
+    border-radius: 7px;
+
+    background: white;
+
+    color: #111;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.acaoJogador:hover {
+    transform: scale(1.1);
+
+    background: #eee;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.acaoJogador:active {
+    transform: scale(0.95);
+}
+
+.nomeJogador {
+    display: block;
+
+    width: 100%;
+
+    overflow-wrap: anywhere;
+}
+
+.jogadorCabecalho {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+.jogadorNomeContainer {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.jogador.bloqueado {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    filter: grayscale(0.35);
+}
+
+.jogador.bloqueado:hover {
+    transform: none;
+}
+
+@media (max-width: 600px) {
+
+    #nomeTorneio {
+        width: 100%;
+    }
+
+    #tituloTorneio {
+        font-size: 28px;
+
+        padding: 12px 15px;
+    }
+
+    .arquivosTorneio {
+        flex-direction: column;
+    }
+
+    .arquivosTorneio .botaoPrincipal {
+        width: 90%;
+    }
+
+    .acoesJogador {
+        gap: 3px;
+    }
+
+    .acaoJogador {
+        width: 27px;
+        height: 27px;
+
+        font-size: 14px;
+    }
+}

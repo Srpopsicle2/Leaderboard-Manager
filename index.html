@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Placar</title>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <h1 id="MainText">PLACAR</h1>
+
+    <main>
+
+        <section id="configuracao" class="card">
+
+            <h2>CRIAR TORNEIO</h2>
+
+            <p>Nome do torneio:</p>
+
+            <input
+                type="text"
+                id="nomeTorneio"
+                maxlength="50"
+                placeholder="Ex: Copa da Escola 2026"
+            >
+
+            <p>Quantos participantes irão competir?</p>
+
+            <input
+                type="number"
+                id="quantidade"
+                min="2"
+                max="64"
+                placeholder="Ex: 8"
+            >
+
+            <div class="opcoesTorneio">
+
+                <label class="opcaoCheck">
+
+                    <input
+                        type="checkbox"
+                        id="torneioAleatorio"
+                    >
+
+                    <span>🎲 TORNEIO ALEATÓRIO</span>
+
+                </label>
+
+            </div>
+
+            <button
+                class="botaoPrincipal"
+                onclick="criarParticipantes()"
+            >
+                CONTINUAR
+            </button>
+
+            <div class="arquivosTorneio">
+
+                <button
+                    class="botaoPrincipal botaoArquivo"
+                    onclick="abrirArquivoTXT()"
+                >
+                    📂 CARREGAR TORNEIO
+                </button>
+
+                <input
+                    type="file"
+                    id="arquivoTXT"
+                    accept=".txt"
+                    style="display: none"
+                    onchange="carregarArquivoTXT(event)"
+                >
+
+            </div>
+
+            <p id="erro"></p>
+
+        </section>
+
+
+        <section id="participantes" class="card escondido">
+
+            <h2>PARTICIPANTES</h2>
+
+            <button
+                class="botaoPrincipal pessoaBotao"
+                onclick="preencherPessoas()"
+            >
+                👥 PREENCHER PESSOAS
+            </button>
+
+            <div id="listaParticipantes"></div>
+
+            <button
+                class="botaoPrincipal"
+                onclick="criarTorneio()"
+            >
+                CRIAR TORNEIO
+            </button>
+
+        </section>
+
+
+        <section id="torneio" class="escondido">
+
+            <h2 id="tituloTorneio">TORNEIO</h2>
+
+            <div id="chave"></div>
+
+            <div id="resultadoFinal"></div>
+
+            <div class="arquivosTorneio">
+
+                <button
+                    class="botaoPrincipal botaoArquivo"
+                    onclick="salvarArquivoTXT()"
+                >
+                    💾 SALVAR TORNEIO
+                </button>
+
+                <button
+                    class="botaoPrincipal botaoArquivo"
+                    onclick="abrirArquivoTXT()"
+                >
+                    📂 CARREGAR TORNEIO
+                </button>
+
+            </div>
+
+            <button
+                class="botaoPrincipal novoTorneio"
+                onclick="novoTorneio()"
+            >
+                NOVO TORNEIO
+            </button>
+
+        </section>
+
+    </main>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
